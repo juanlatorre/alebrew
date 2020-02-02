@@ -6,9 +6,34 @@ class Alebrew extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Alebrew',
-      theme: ThemeData.light(),
+      theme: ThemeData.dark(),
       home: Scaffold(
         body: BrewList(title: 'Alebrew'),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  Navigator.pop(context);
+                }
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                }
+              )
+            ],
+          )
+        ),
       )
     );
   }
