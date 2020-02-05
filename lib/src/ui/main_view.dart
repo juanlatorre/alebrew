@@ -1,10 +1,8 @@
 import 'package:alebrew/src/blocs/navigation_bloc.dart';
-import 'package:alebrew/src/resources/get_information.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
-import 'package:alebrew/src/ui/pages/brew_list.dart';
+import 'package:alebrew/src/ui/pages/view_all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:package_info/package_info.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -15,7 +13,11 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+          title: Text('Alebrew', style: TextStyle(color: Colors.black)),
+          backgroundColor: Colors.white,
+      ),
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(
@@ -60,6 +62,7 @@ class _MainViewState extends State<MainView> {
                 'View All',
                 () {
                   print('View All button clicked');
+                  NavigationDrawerBloc().updateNavigation("View All");
                 },
                 false,
                 Icons.menu
@@ -167,7 +170,6 @@ class _MainViewState extends State<MainView> {
                 () {
                   print('Trash button clicked');
                   // FIXME
-                  print(getVersion().toString());
                 },
                 true,
                 Icons.delete
@@ -184,13 +186,6 @@ class _MainViewState extends State<MainView> {
                 ),
               ),
               // ListTile(
-              //   title: Text("Page One"),
-              //   onTap: () {
-              //     Navigator.of(context).pop();
-              //     NavigationDrawerBloc().updateNavigation("PageOne");
-              //   },
-              // ),
-              // ListTile(
               //   title: Text("Page Two"),
               //   onTap: () {
               //     Navigator.of(context).pop();
@@ -206,10 +201,10 @@ class _MainViewState extends State<MainView> {
         initialData: NavigationDrawerBloc().navigationProvider.currentNavigation,
         builder: (context, snapshot) {
           switch (NavigationDrawerBloc().navigationProvider.currentNavigation) {
-            case ('Brew List'):
-              return BrewList();
+            case ('View All'):
+              return ViewAll();
             default:
-              return BrewList();
+              return ViewAll();
           }
         }
       )

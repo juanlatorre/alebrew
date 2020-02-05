@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BrewList extends StatefulWidget {
+class ViewAll extends StatefulWidget {
   @override
-  _BrewListState createState() => _BrewListState();
+  _ViewAllState createState() => _ViewAllState();
 }
 
-class _BrewListState extends State<BrewList> {
+class _ViewAllState extends State<ViewAll> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,4 +22,5 @@ class _BrewListState extends State<BrewList> {
       ),
     );
   }
+
 }
