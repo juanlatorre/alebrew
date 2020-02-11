@@ -11,11 +11,12 @@ class _AlebrewState extends State<Alebrew> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
       home: FutureBuilder(
-        future: Hive.openBox('brews'),
+        future: Hive.openBox('data'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

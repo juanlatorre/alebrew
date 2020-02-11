@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ViewAll extends StatefulWidget {
   @override
@@ -6,19 +8,19 @@ class ViewAll extends StatefulWidget {
 }
 
 class _ViewAllState extends State<ViewAll> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+      body: ValueListenableBuilder(
+        valueListenable: Hive.box('data').listenable(),
+        builder: (context, box, widget) {
+          return Switch(
+            value: box.get('darkMode'),
+            onChanged: (val) {
+              box.put('darkMode', val);
+            }
+          );
+        },
       ),
     );
   }

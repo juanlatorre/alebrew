@@ -1,4 +1,5 @@
 import 'package:alebrew/src/models/brew_model.dart';
+import 'package:alebrew/src/models/data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:alebrew/src/app.dart';
 import 'package:hive/hive.dart';
@@ -11,5 +12,6 @@ void main() async {
   final appDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   Hive.registerAdapter(BrewModelAdapter());
+  Hive.registerAdapter(DataModelAdapter());
   runApp(Alebrew());
 }
