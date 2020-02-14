@@ -1,3 +1,4 @@
+import 'package:alebrew/src/ui/pages/no_brew_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -10,19 +11,15 @@ class ViewAll extends StatefulWidget {
 class _ViewAllState extends State<ViewAll> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ValueListenableBuilder(
+    return Container(
+      width: double.infinity,
+      child: ValueListenableBuilder(
         valueListenable: Hive.box('data').listenable(),
         builder: (context, box, widget) {
-          return Switch(
-            value: box.get('darkMode'),
-            onChanged: (val) {
-              box.put('darkMode', val);
-            }
-          );
+          String data = box.get("data");
+          return data == null ? noBrewPage() : Text("There is data bro."); 
         },
       ),
     );
   }
-
 }
