@@ -1,4 +1,5 @@
 import 'package:alebrew/src/blocs/navigation_bloc.dart';
+import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
 import 'package:alebrew/src/ui/pages/view_all.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +14,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-          title: Text('Alebrew', style: TextStyle(color: Colors.black)),
-          backgroundColor: Colors.white,
-      ),
+      appBar: appBar('Alebrew'),
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(

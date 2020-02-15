@@ -17,7 +17,7 @@ class _ViewAllState extends State<ViewAll> {
         valueListenable: Hive.box('data').listenable(),
         builder: (context, box, widget) {
           String data = box.get("data");
-          return data == null ? noBrewPage() : Text("There is data bro."); 
+          return data == null ? noBrewPage(context) : Text("There is data bro."); 
         },
       ),
     );

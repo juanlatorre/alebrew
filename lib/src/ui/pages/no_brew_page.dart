@@ -1,16 +1,13 @@
+import 'package:alebrew/src/ui/components/title.dart';
+import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
 
-Widget noBrewPage() {
+Widget noBrewPage(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-      Text(
-        "Alebrew",
-        style: TextStyle(
-          fontSize: 50,
-        )
-      ),
+      title("Alebrew", 50),
       SizedBox(height: 30),
       Text(
         "There is no brew page to show.\nWhy don't you try to create one?",
@@ -37,14 +34,14 @@ Widget noBrewPage() {
               Text(
                 "New Brew",
                 style: TextStyle(
-                  fontSize: 20,         
+                  fontSize: 20,
                 )
               ),
             ]
           ),
           onPressed: () {
-            print("New Brew pressed.");
-          },
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AddNewBrew()));
+          }
         ),
       )
     ]
