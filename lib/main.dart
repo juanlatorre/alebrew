@@ -11,7 +11,7 @@ void main() async {
   
   final appDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
-  Hive.registerAdapter(BrewAdapter());
   Hive.registerAdapter(DataAdapter());
+  Hive.registerAdapter(BrewAdapter());
   runApp(Alebrew());
 }
