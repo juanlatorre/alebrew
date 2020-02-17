@@ -25,6 +25,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
     return Scaffold(
       appBar: appBar("New Brew | Alebrew"),
       body: Container(
+        color: Colors.white,
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +82,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            Functions.addBrewToDatabase();
+                            Functions.addBrewToDatabase(_textController.text);
                             Navigator.pop(context);
                           }
                         },

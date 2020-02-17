@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'brew_model.g.dart';
 
 @HiveType(typeId: 0)
-class BrewModel extends HiveObject {
+class Brew extends HiveObject {
   @HiveField(0)
   int id;
   @HiveField(1)
@@ -15,7 +15,7 @@ class BrewModel extends HiveObject {
   @HiveField(4)
   List<dynamic> brewPageList;
 
-  BrewModel(
+  Brew(
     this.id,
     this.brewPageName,
     this.brewPageType,

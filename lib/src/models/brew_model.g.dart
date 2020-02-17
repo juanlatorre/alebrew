@@ -6,17 +6,17 @@ part of 'brew_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class BrewModelAdapter extends TypeAdapter<BrewModel> {
+class BrewAdapter extends TypeAdapter<Brew> {
   @override
   final typeId = 0;
 
   @override
-  BrewModel read(BinaryReader reader) {
+  Brew read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return BrewModel(
+    return Brew(
       fields[0] as int,
       fields[1] as String,
       fields[2] as String,
@@ -26,7 +26,7 @@ class BrewModelAdapter extends TypeAdapter<BrewModel> {
   }
 
   @override
-  void write(BinaryWriter writer, BrewModel obj) {
+  void write(BinaryWriter writer, Brew obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
