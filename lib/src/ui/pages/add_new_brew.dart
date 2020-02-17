@@ -31,22 +31,30 @@ class _AddNewBrewState extends State<AddNewBrew> {
           children: <Widget>[
             title("Insert your Brew Name", 30),
             SizedBox(height: 30),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    autocorrect: false,
-                    autofocus: true,
-                    controller: _textController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.center,
+                      cursorColor: Colors.pink[200],
+                      autocorrect: false,
+                      autofocus: true,
+                      controller: _textController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                )
               )
             )
           ]
