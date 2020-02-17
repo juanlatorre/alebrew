@@ -1,7 +1,7 @@
-import 'package:alebrew/src/models/brew_model.dart';
+import 'package:alebrew/src/models/brew.dart';
 import 'package:hive/hive.dart';
 
-part 'data_model.g.dart';
+part 'data.g.dart';
 
 @HiveType(typeId: 1)
 class Data extends HiveObject {

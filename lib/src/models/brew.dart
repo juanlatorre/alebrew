@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'brew_model.g.dart';
+part 'brew.g.dart';
 
 @HiveType(typeId: 0)
 class Brew extends HiveObject {
@@ -9,16 +9,13 @@ class Brew extends HiveObject {
   @HiveField(1)
   String brewPageName;
   @HiveField(2)
-  String brewPageType;
-  @HiveField(3)
   String brewPageLastEdited;
-  @HiveField(4)
+  @HiveField(3)
   List<dynamic> brewPageList;
 
   Brew(
     this.id,
     this.brewPageName,
-    this.brewPageType,
     this.brewPageLastEdited,
     this.brewPageList,
   );

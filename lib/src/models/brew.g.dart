@@ -1,34 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'data_model.dart';
+part of 'brew.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class DataAdapter extends TypeAdapter<Data> {
+class BrewAdapter extends TypeAdapter<Brew> {
   @override
-  final typeId = 1;
+  final typeId = 0;
 
   @override
-  Data read(BinaryReader reader) {
+  Brew read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Data(
+    return Brew(
       fields[0] as int,
-      (fields[1] as List)?.cast<Brew>(),
+      fields[1] as String,
+      fields[2] as String,
+      (fields[3] as List)?.cast<dynamic>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Data obj) {
+  void write(BinaryWriter writer, Brew obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.brewList);
+      ..write(obj.brewPageName)
+      ..writeByte(2)
+      ..write(obj.brewPageLastEdited)
+      ..writeByte(3)
+      ..write(obj.brewPageList);
   }
 }
