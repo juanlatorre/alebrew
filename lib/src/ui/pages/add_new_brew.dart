@@ -1,3 +1,4 @@
+import 'package:alebrew/src/resources/functions.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:flutter/material.dart';
@@ -42,17 +43,50 @@ class _AddNewBrewState extends State<AddNewBrew> {
                         fontSize: 20,
                       ),
                       textAlign: TextAlign.center,
-                      cursorColor: Colors.pink[200],
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                      ),
                       autocorrect: false,
                       autofocus: true,
                       controller: _textController,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Please enter a name';
                         }
                         return null;
                       },
                     ),
+                    SizedBox(height: 30),
+                    SizedBox(
+                      width: 150,
+                      child: OutlineButton(
+                        color: Colors.grey[50],
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          style: BorderStyle.solid,
+                          width: 2,
+                        ),
+                        textColor: Colors.black,
+                        child: Text(
+                          "ADD",
+                          style: TextStyle(
+                            fontSize: 20,
+                          )
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            Functions.addBrewToDatabase();
+                            Navigator.pop(context);
+                          }
+                        },
+                      )
+                    )
                   ],
                 )
               )
