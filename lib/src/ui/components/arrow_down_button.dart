@@ -11,6 +11,8 @@ class ArrowDownButton extends StatelessWidget {
       width: 30,
       child: RawMaterialButton(
         elevation: 0,
+        focusElevation: 0,
+        highlightElevation: 0,
         fillColor: Colors.pink[200],
         child: Padding(
           padding: EdgeInsets.zero,
