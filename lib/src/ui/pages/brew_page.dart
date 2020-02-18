@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 Widget brewPage(BuildContext context) {
   return Container(
     color: Colors.white,
-    padding: EdgeInsets.only(right: 50, left: 50),
+    padding: EdgeInsets.only(right: 50, left: 50, top: 50),
     child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Row(
@@ -39,6 +38,12 @@ Widget brewPage(BuildContext context) {
                 ArrowDownButton(
                   onPressed: () {}
                 )
+              ]
+            ),
+            SizedBox(height: 30),
+            Row(
+              children: <Widget>[
+                
               ]
             )
           ]
