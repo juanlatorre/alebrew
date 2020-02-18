@@ -1,5 +1,4 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/models/data.dart';
 import 'package:flutter/material.dart';
 import 'package:alebrew/src/app.dart';
 import 'package:hive/hive.dart';
@@ -11,7 +10,6 @@ void main() async {
   
   final appDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
-  Hive.registerAdapter(DataAdapter());
   Hive.registerAdapter(BrewAdapter());
   runApp(Alebrew());
 }

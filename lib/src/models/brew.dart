@@ -5,20 +5,16 @@ part 'brew.g.dart';
 @HiveType(typeId: 0)
 class Brew extends HiveObject {
   @HiveField(0)
-  int id;
+  String name;
   @HiveField(1)
-  String brewPageName;
+  String lastEdited;
   @HiveField(2)
-  String brewPageLastEdited;
-  @HiveField(3)
-  List<dynamic> brewPageList;
+  List<dynamic> pageList;
 
-  Brew(
-    this.id,
-    this.brewPageName,
-    this.brewPageLastEdited,
-    this.brewPageList,
-  );
+  Brew(this.name, this.lastEdited, [this.pageList = const []]);
+
+  @override
+  String toString() => name;
 //   int _brewPage;
 //   String _brewPageName;
 //   String _brewPageType;

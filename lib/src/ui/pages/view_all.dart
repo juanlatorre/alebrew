@@ -1,3 +1,5 @@
+import 'package:alebrew/src/models/brew.dart';
+import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:alebrew/src/ui/pages/no_brew_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -14,10 +16,14 @@ class _ViewAllState extends State<ViewAll> {
     return Container(
       width: double.infinity,
       child: ValueListenableBuilder(
-        valueListenable: Hive.box('data').listenable(),
+        valueListenable: Hive.box<Brew>('Brewery').listenable(),
         builder: (context, box, widget) {
-          String data = box.get("data");
-          return data == null ? noBrewPage(context) : Text("There is data bro."); 
+          if (box.values.isEmpty) {
+            return noBrewPage(context);
+          } else {
+            return brewPage(context);
+          }
+          // return brewery == null ? noBrewPage(context) : Text("There is data bro.");
         },
       ),
     );

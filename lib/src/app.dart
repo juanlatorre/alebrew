@@ -1,3 +1,4 @@
+import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -16,7 +17,7 @@ class _AlebrewState extends State<Alebrew> {
         primarySwatch: Colors.pink,
       ),
       home: FutureBuilder(
-        future: Hive.openBox('data'),
+        future: Hive.openBox<Brew>('Brewery'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

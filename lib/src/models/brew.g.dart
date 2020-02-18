@@ -17,24 +17,21 @@ class BrewAdapter extends TypeAdapter<Brew> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Brew(
-      fields[0] as int,
+      fields[0] as String,
       fields[1] as String,
-      fields[2] as String,
-      (fields[3] as List)?.cast<dynamic>(),
+      (fields[2] as List)?.cast<dynamic>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Brew obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.brewPageName)
-      ..writeByte(2)
-      ..write(obj.brewPageLastEdited)
       ..writeByte(3)
-      ..write(obj.brewPageList);
+      ..writeByte(0)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.lastEdited)
+      ..writeByte(2)
+      ..write(obj.pageList);
   }
 }
