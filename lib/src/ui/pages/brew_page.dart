@@ -1,5 +1,8 @@
+import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/arrow_down_button.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 
 Widget brewPage(BuildContext context) {
 
@@ -89,7 +92,22 @@ Widget brewPage(BuildContext context) {
           ),
         ),
         SizedBox(height: 20),
-        
+        ValueListenableBuilder(
+          valueListenable: Hive.box<Brew>("Brewery").listenable(keys: ['lista']),
+          builder: (context, Box<Brew> box, _) {
+            return Container(
+              height: 300,
+              child: ListView.builder(
+                itemCount: box.length,
+                itemBuilder: (context, listIndex) {
+                  return ListTile(
+                    title: Text("valor"), // TODO: Fix this
+                  );
+                },
+              )
+            );
+          }
+        )
       ]
     ),
   );
