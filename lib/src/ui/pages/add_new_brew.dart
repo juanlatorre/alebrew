@@ -1,8 +1,6 @@
 import 'package:alebrew/src/resources/functions.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/title.dart';
-import 'package:alebrew/src/ui/main_view.dart';
-import 'package:alebrew/src/ui/pages/view_all.dart';
 import 'package:flutter/material.dart';
 
 class AddNewBrew extends StatefulWidget {

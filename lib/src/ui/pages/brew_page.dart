@@ -1,4 +1,4 @@
-import 'package:alebrew/src/ui/components/title.dart';
+import 'package:alebrew/src/ui/components/arrow_down_button.dart';
 import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
 
@@ -35,17 +35,9 @@ Widget brewPage(BuildContext context) {
                   ),
                   onPressed: () {}
                 ),
-                SizedBox(width:5),
-                SizedBox( // FIXME
-                  width: 40,
-                  child: FlatButton(
-                    color: Colors.pink[200],
-                    child: Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {}
-                  ),
+                SizedBox(width:1),
+                ArrowDownButton(
+                  onPressed: () {}
                 )
               ]
             )
