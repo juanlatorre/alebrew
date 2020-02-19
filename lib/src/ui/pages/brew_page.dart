@@ -1,5 +1,6 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/arrow_down_button.dart';
+import 'package:alebrew/src/ui/components/show_brew_modal.dart';
 import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -109,13 +110,13 @@ Widget brewPage(BuildContext context) {
                     color: Colors.white,
                     child: InkWell(
                       onTap: () {},
-                      onLongPress: () {},
+                      onLongPress: () => showBrewModal(context, box, index),
                       child: Column(
                         children: <Widget>[
                           if (index == 0)
                             Divider(
                               height: 1,
-                  color: Colors.black,
+                              color: Colors.black,
                             ),
                           Padding(
                             padding: const EdgeInsets.only(top: 15, bottom: 15, left: 5, right: 5),
