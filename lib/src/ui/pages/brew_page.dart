@@ -1,5 +1,6 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/arrow_down_button.dart';
+import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -10,7 +11,7 @@ Widget brewPage(BuildContext context) {
 
   return Container(
     color: Colors.white,
-    padding: EdgeInsets.only(right: 40, left: 40, top: 50),
+    padding: EdgeInsets.only(right: 30, left: 30, top: 50),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -37,7 +38,9 @@ Widget brewPage(BuildContext context) {
                       fontWeight: FontWeight.bold,
                     )
                   ),
-                  onPressed: () {}
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddNewBrew()));
+                  }
                 ),
                 SizedBox(width:1),
                 ArrowDownButton(
@@ -95,16 +98,59 @@ Widget brewPage(BuildContext context) {
         ValueListenableBuilder(
           valueListenable: Hive.box<Brew>("Brewery").listenable(keys: ['lista']),
           builder: (context, Box<Brew> box, _) {
-            return Container(
-              height: 300,
-              child: ListView.builder(
-                itemCount: box.length,
-                itemBuilder: (context, listIndex) {
-                  return ListTile(
-                    title: Text("valor"), // TODO: Fix this
+            return Flexible(
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return Divider(height: 1, color: Colors.black);
+                },
+                itemCount: box.values.length,
+                itemBuilder: (context, index) {
+                  return Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      onLongPress: () {},
+                      child: Column(
+                        children: <Widget>[
+                          if (index == 0)
+                            Divider(
+                              height: 1,
+                  color: Colors.black,
+                            ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15, bottom: 15, left: 5, right: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  box.getAt(index).name,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                Text(
+                                  box.getAt(index).lastEdited,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey
+                                  )
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (index == box.values.length - 1)
+                            Divider(
+                              height: 1,
+                              color: Colors.black,
+                            ),
+                        ]
+                      ),
+                    ),
                   );
                 },
-              )
+              ),
             );
           }
         )
