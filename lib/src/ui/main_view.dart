@@ -1,4 +1,3 @@
-import 'package:alebrew/src/blocs/navigation_bloc.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
 import 'package:alebrew/src/ui/pages/add_new_brew.dart';
@@ -52,7 +51,6 @@ class _MainViewState extends State<MainView> {
                 'New Brew',
                 () {
                   Navigator.of(context).pop();
-                  NavigationDrawerBloc().updateNavigation("New Brew");
                 },
                 false,
                 Icons.add_circle
@@ -62,7 +60,6 @@ class _MainViewState extends State<MainView> {
                 'View All',
                 () {
                   Navigator.of(context).pop();
-                  NavigationDrawerBloc().updateNavigation("View All");
                 },
                 false,
                 Icons.menu
@@ -169,7 +166,6 @@ class _MainViewState extends State<MainView> {
                 'Trash',
                 () {
                   Navigator.of(context).pop();
-                  NavigationDrawerBloc().updateNavigation("Trash");
                 },
                 true,
                 Icons.delete
