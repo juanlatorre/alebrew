@@ -123,13 +123,16 @@ Widget brewPage(BuildContext context) {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(
-                                  box.getAt(index).name,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )
+                                Flexible(
+                                  child: Text(
+                                    box.getAt(index).name,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )
+                                  ),
                                 ),
+                                SizedBox(width: 25),
                                 Text(
                                   box.getAt(index).lastEdited,
                                   style: TextStyle(
