@@ -25,4 +25,8 @@ class Functions {
 
     box.getAt(index).save();
   }
+
+  static void deleteBrew(Box<Brew> box, int index) {
+    box.getAt(index).delete();
+  }
 }

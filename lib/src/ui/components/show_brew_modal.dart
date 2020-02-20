@@ -1,4 +1,5 @@
 import 'package:alebrew/src/models/brew.dart';
+import 'package:alebrew/src/resources/functions.dart';
 import 'package:alebrew/src/ui/components/change_name_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -85,7 +86,7 @@ void showBrewModal(BuildContext context, Box<Brew> box, int index) {
                 onPressed: () async {
                   Navigator.pop(context);
                   await Future.delayed(Duration(milliseconds: 300));
-                  box.getAt(index).delete();
+                  Functions.deleteBrew(box, index);
                 }
               )
             ],
