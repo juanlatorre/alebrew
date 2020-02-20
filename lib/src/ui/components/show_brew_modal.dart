@@ -15,11 +15,11 @@ void showBrewModal(BuildContext context, Box<Brew> box, int index) {
     context: context,
     builder: (context) => Container(
       height: MediaQuery.of(context).size.height * 0.2,
-      margin: EdgeInsets.all(60),
+      margin: EdgeInsets.all(50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 30),
+          SizedBox(height: 25),
           Flexible(
             child: Text(
               box.getAt(index).name,
@@ -30,7 +30,7 @@ void showBrewModal(BuildContext context, Box<Brew> box, int index) {
               )
             ),
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
