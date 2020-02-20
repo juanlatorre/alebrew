@@ -15,9 +15,8 @@ class _AddNewBrewState extends State<AddNewBrew> {
   final _textController = TextEditingController();
 
   @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -96,5 +95,11 @@ class _AddNewBrewState extends State<AddNewBrew> {
           ]
         )),
     );
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 }

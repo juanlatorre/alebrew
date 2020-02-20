@@ -16,20 +16,7 @@ class _AlebrewState extends State<Alebrew> {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: FutureBuilder(
-        future: Hive.openBox<Brew>('Brewery'),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            } else {
-              return MainView();
-            }
-          } else {
-            return Scaffold();
-          }
-        },
-      ),
+      home: MainView()
     );
   }
 

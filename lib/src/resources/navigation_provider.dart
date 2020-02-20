@@ -1,5 +1,5 @@
 class NavigationProvider {
-  String currentNavigation = "Brew List";
+  String currentNavigation = "View All";
 
   void updateNavigation(String navigation) {
     currentNavigation = navigation;

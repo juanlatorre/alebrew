@@ -1,6 +1,8 @@
 import 'package:alebrew/src/blocs/navigation_bloc.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
+import 'package:alebrew/src/ui/pages/add_new_brew.dart';
+import 'package:alebrew/src/ui/pages/trash.dart';
 import 'package:alebrew/src/ui/pages/view_all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -49,7 +51,8 @@ class _MainViewState extends State<MainView> {
               drawerTile(
                 'New Brew',
                 () {
-                  print('New Brew button clicked');
+                  Navigator.of(context).pop();
+                  NavigationDrawerBloc().updateNavigation("New Brew");
                 },
                 false,
                 Icons.add_circle
@@ -58,7 +61,7 @@ class _MainViewState extends State<MainView> {
               drawerTile(
                 'View All',
                 () {
-                  print('View All button clicked');
+                  Navigator.of(context).pop();
                   NavigationDrawerBloc().updateNavigation("View All");
                 },
                 false,
@@ -165,8 +168,8 @@ class _MainViewState extends State<MainView> {
               drawerTile(
                 'Trash',
                 () {
-                  print('Trash button clicked');
-                  // FIXME
+                  Navigator.of(context).pop();
+                  NavigationDrawerBloc().updateNavigation("Trash");
                 },
                 true,
                 Icons.delete
@@ -182,29 +185,11 @@ class _MainViewState extends State<MainView> {
                   )
                 ),
               ),
-              // ListTile(
-              //   title: Text("Page Two"),
-              //   onTap: () {
-              //     Navigator.of(context).pop();
-              //     NavigationDrawerBloc().updateNavigation("PageTwo");
-              //   },
-              // ),
             ],
           ),
         )
       ),
-      body: StreamBuilder(
-        stream: NavigationDrawerBloc().getNavigation,
-        initialData: NavigationDrawerBloc().navigationProvider.currentNavigation,
-        builder: (context, snapshot) {
-          switch (NavigationDrawerBloc().navigationProvider.currentNavigation) {
-            case ('View All'):
-              return ViewAll();
-            default:
-              return ViewAll();
-          }
-        }
-      )
+      body: ViewAll()
     );
   }
 }

@@ -12,6 +12,11 @@ class ViewAll extends StatefulWidget {
 
 class _ViewAllState extends State<ViewAll> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
