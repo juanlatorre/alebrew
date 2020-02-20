@@ -1,4 +1,5 @@
 import 'package:alebrew/src/models/brew.dart';
+import 'package:alebrew/src/resources/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -17,6 +18,7 @@ void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
             Form(
               key: _formKey,
               child: TextFormField(
+                maxLength: 25,
                 autocorrect: false,
                 autofocus: true,
                 controller: _textController,
@@ -48,8 +50,7 @@ void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
           child: Text('Ok'),
           onPressed: () {
             if (_formKey.currentState.validate()) {
-              box.getAt(index).name = _textController.text;
-              box.getAt(index).save();
+              Functions.updateBrewName(box, index, _textController.text);
               Navigator.of(context).pop();
             }
           },

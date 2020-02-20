@@ -40,6 +40,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
+                      maxLength: 25,
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -83,7 +84,6 @@ class _AddNewBrewState extends State<AddNewBrew> {
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             Functions.addBrewToDatabase(_textController.text, true);
-                            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ViewAll()));
                             Navigator.pop(context);
                           }
                         },

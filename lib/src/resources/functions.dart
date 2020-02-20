@@ -14,4 +14,14 @@ class Functions {
 
     print(_brewery.values);
   }
+
+  static void updateBrewName(Box<Brew> box, int index, String newName) {
+    DateTime _now = DateTime.now().toLocal();
+    String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
+    
+    box.getAt(index).name = newName;
+    box.getAt(index).lastEdited = _lastEdited;
+
+    box.getAt(index).save();
+  }
 }
