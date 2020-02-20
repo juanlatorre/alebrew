@@ -21,9 +21,8 @@ class _ViewAllState extends State<ViewAll> {
           if (box.values.isEmpty) {
             return noBrewPage(context);
           } else {
-            return brewPage(context);
+            return BrewPage();
           }
-          // return brewery == null ? noBrewPage(context) : Text("There is data bro.");
         },
       ),
     );
