@@ -5,12 +5,13 @@ import 'package:intl/intl.dart';
 class Functions { 
   static void addBrewToDatabase(String brewName, [bool firstTime = false]) async {
     Box<dynamic> _brewery = await Hive.openBox<Brew>("Brewery");
-    // _brewery.clear();
+    String _brewName = brewName.trim();
+
 
     DateTime _now = DateTime.now().toLocal();
     String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
 
-    _brewery.add(Brew(brewName, _lastEdited));
+    _brewery.add(Brew(_brewName, _lastEdited));
 
     print(_brewery.values);
   }
@@ -19,7 +20,7 @@ class Functions {
     DateTime _now = DateTime.now().toLocal();
     String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
     
-    box.getAt(index).name = newName;
+    box.getAt(index).name = newName.trim();
     box.getAt(index).lastEdited = _lastEdited;
 
     box.getAt(index).save();
