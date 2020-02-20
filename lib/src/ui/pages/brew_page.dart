@@ -43,10 +43,6 @@ Widget brewPage(BuildContext context) {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AddNewBrew()));
                   }
                 ),
-                SizedBox(width:1),
-                ArrowDownButton(
-                  onPressed: () {}
-                )
               ]
             ),
           ]
