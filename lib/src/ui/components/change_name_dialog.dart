@@ -8,7 +8,7 @@ void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
   TextEditingController _textController = TextEditingController();
   _textController.text = box.getAt(index).name;
   final _formKey = GlobalKey<FormState>();
-  final provider = Provider.of<BrewProvider>(context);
+  final provider = Provider.of<BrewProvider>(context, listen: false);
 
   showDialog(
     context: context,
@@ -52,8 +52,8 @@ void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
           child: Text('Ok'),
           onPressed: () {
             if (_formKey.currentState.validate()) {
-              provider.updateBrewName(box, index, _textController.text);
               Navigator.of(context).pop();
+              provider.updateBrewName(box, index, _textController.text);
             }
           },
         ),

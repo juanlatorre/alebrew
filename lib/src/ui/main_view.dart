@@ -12,12 +12,12 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    final navigation = Provider.of<BrewProvider>(context);
+    final provider = Provider.of<BrewProvider>(context);
 
     return Scaffold(
-      appBar: appBar(navigation.getNavigationTitle),
+      appBar: appBar(provider.getNavigationTitle),
       drawer: drawer(context),
-      body: navigation.getNavigation,
+      body: provider.getNavigation,
     );
   }
 }

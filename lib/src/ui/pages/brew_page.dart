@@ -88,7 +88,7 @@ class _BrewPageState extends State<BrewPage> {
           ),
           SizedBox(height: 20),
           ValueListenableBuilder(
-            valueListenable: Hive.box<Brew>("Brewery").listenable(keys: ['lista']),
+            valueListenable: Hive.box<Brew>("Brewery").listenable(),
             builder: (context, Box<Brew> box, _) {
               return Flexible(
                 child: ListView.separated(
