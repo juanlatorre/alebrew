@@ -40,9 +40,9 @@ class _TrashState extends State<Trash> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                )
+                ),
               ),
-            ]
+            ],
           ),
           SizedBox(height: 10),
           Container(
@@ -56,9 +56,7 @@ class _TrashState extends State<Trash> {
                 filled: true,
                 fillColor: Colors.grey[100],
                 hintText: "Search in trash...",
-                hintStyle: TextStyle(
-                  color: Colors.grey[600]
-                ),
+                hintStyle: TextStyle(color: Colors.grey[600]),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.grey,
@@ -67,9 +65,11 @@ class _TrashState extends State<Trash> {
               ),
               controller: _searchController,
               onChanged: (String value) {
-                setState(() {
-                  searchResult = value;
-                });
+                setState(
+                  () {
+                    searchResult = value;
+                  },
+                );
               },
             ),
           ),
@@ -84,17 +84,21 @@ class _TrashState extends State<Trash> {
                   },
                   itemCount: box.values.length,
                   itemBuilder: (context, index) {
-                    return searchResult == null || searchResult == "" ? 
-                    brewListItem(context, box, index, true) :
-                    box.getAt(index).name.toLowerCase().contains(searchResult) ?
-                    brewListItem(context, box, index, true) : 
-                    Container();
+                    return searchResult == null || searchResult == ""
+                        ? brewListItem(context, box, index, true)
+                        : box
+                                .getAt(index)
+                                .name
+                                .toLowerCase()
+                                .contains(searchResult)
+                            ? brewListItem(context, box, index, true)
+                            : Container();
                   },
                 ),
               );
-            }
+            },
           )
-        ]
+        ],
       ),
     );
   }

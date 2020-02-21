@@ -11,6 +11,15 @@ class Alebrew extends StatefulWidget {
 }
 
 class _AlebrewState extends State<Alebrew> {
+  void initState() {
+    _openTrashBox().then((response) => print(response));
+    super.initState();
+  }
+
+  Future _openTrashBox() async {
+    return await Hive.openBox<Brew>('Trash');
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<BrewProvider>(
