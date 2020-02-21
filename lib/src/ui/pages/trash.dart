@@ -19,7 +19,9 @@ class _TrashState extends State<Trash> {
 
   @override
   void initState() {
-    _openTrashBox();
+    _openTrashBox().then((result) {
+      print(result);
+    });
     super.initState();
   }
 
