@@ -1,12 +1,14 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/resources/functions.dart';
+import 'package:alebrew/src/providers/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
   TextEditingController _textController = TextEditingController();
   _textController.text = box.getAt(index).name;
   final _formKey = GlobalKey<FormState>();
+  final provider = Provider.of<BrewProvider>(context);
 
   showDialog(
     context: context,
@@ -50,7 +52,7 @@ void changeNameDialog(BuildContext context, Box<Brew> box, int index) {
           child: Text('Ok'),
           onPressed: () {
             if (_formKey.currentState.validate()) {
-              Functions.updateBrewName(box, index, _textController.text);
+              provider.updateBrewName(box, index, _textController.text);
               Navigator.of(context).pop();
             }
           },
