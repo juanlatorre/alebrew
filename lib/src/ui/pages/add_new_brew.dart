@@ -1,7 +1,7 @@
-import 'package:alebrew/src/resources/functions.dart';
-import 'package:alebrew/src/ui/components/appbar.dart';
+import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddNewBrew extends StatefulWidget {
   AddNewBrew({Key key}) : super(key: key);
@@ -16,6 +16,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BrewProvider>(context);
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -76,8 +77,10 @@ class _AddNewBrewState extends State<AddNewBrew> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            Functions.addBrewToDatabase(_textController.text, true);
-                            Navigator.pop(context);
+                            provider.addBrewToDatabase(_textController.text, true);
+                            Navigator.of(context).pop();
+                            FocusScope.of(context).unfocus();
+                            provider.updateNavigation("View All");
                           }
                         },
                       )

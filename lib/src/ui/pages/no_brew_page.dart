@@ -1,10 +1,10 @@
-import 'package:alebrew/src/providers/navigation_provider.dart';
+import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 Widget noBrewPage(BuildContext context) {
-  final navigation = Provider.of<NavigationProvider>(context);
+  final navigation = Provider.of<BrewProvider>(context);
   return Container(
     color: Colors.white,
     child: Column(

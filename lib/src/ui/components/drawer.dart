@@ -1,10 +1,10 @@
-import 'package:alebrew/src/providers/navigation_provider.dart';
+import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 Widget drawer(BuildContext context) {
-  final navigation = Provider.of<NavigationProvider>(context);
+  final provider = Provider.of<BrewProvider>(context);
   return Drawer(
     child: SingleChildScrollView(
       child: Column(
@@ -30,7 +30,7 @@ Widget drawer(BuildContext context) {
             'New Brew',
             () {
               Navigator.of(context).pop();
-              navigation.updateNavigation("New Brew");
+              provider.updateNavigation("New Brew");
             },
             false,
             Icons.add_circle
@@ -40,7 +40,7 @@ Widget drawer(BuildContext context) {
             'View All',
             () {
               Navigator.of(context).pop();
-              navigation.updateNavigation("View All");
+              provider.updateNavigation("View All");
             },
             false,
             Icons.menu
@@ -147,7 +147,7 @@ Widget drawer(BuildContext context) {
             'Trash',
             () {
               Navigator.of(context).pop();
-              navigation.updateNavigation("Trash");
+              provider.updateNavigation("Trash");
             },
             true,
             Icons.delete
