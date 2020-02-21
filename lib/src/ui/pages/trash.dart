@@ -1,6 +1,7 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/brew_item.dart';
+import 'package:alebrew/src/ui/components/show_clear_trash_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -24,8 +25,6 @@ class _TrashState extends State<Trash> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<BrewProvider>(context);
-
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(right: 30, left: 30, top: 50),
@@ -42,6 +41,21 @@ class _TrashState extends State<Trash> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                width: 60,
+                child: FlatButton(
+                  color: Colors.pink[200],
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  onPressed: () => showClearTrashModal(
+                    context,
+                    Hive.box<Brew>("Trash"),
+                  ),
+                ),
+              )
             ],
           ),
           SizedBox(height: 10),

@@ -10,7 +10,7 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index,
     color: Colors.white,
     child: InkWell(
       onTap: () => (isTrash) ? showTrashModal(context, box, index) : null,
-      onLongPress: () => showBrewModal(context, box, index),
+      onLongPress: () => (isTrash) ? null : showBrewModal(context, box, index),
       child: Column(
         children: <Widget>[
           Padding(
@@ -39,11 +39,6 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index,
               ],
             ),
           ),
-          // if (index == box.values.length - 1)
-          //   Divider(
-          //     height: 1,
-          //     color: Colors.black,
-          //   ),
         ],
       ),
     ),

@@ -35,13 +35,13 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
                   Padding(
                     padding: EdgeInsets.all(15),
                     child: Icon(
-                      Icons.edit,
+                      Icons.undo,
                       size: 30,
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    "Edit name",
+                    "Undo",
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                changeNameDialog(context, box, index);
+                provider.restoreBrew(box, index);
               },
             ),
             SizedBox(width: 24),
@@ -62,13 +62,13 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
                   Padding(
                     padding: EdgeInsets.all(15),
                     child: Icon(
-                      Icons.delete,
+                      Icons.delete_forever,
                       size: 30,
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    "Delete",
+                    "Clean",
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
               onPressed: () async {
                 Navigator.pop(context);
                 await Future.delayed(Duration(milliseconds: 300));
-                provider.deleteBrew(box, index);
+                provider.permanentDeleteBrew(box, index);
               },
             )
           ],

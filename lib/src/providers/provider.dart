@@ -28,6 +28,16 @@ class BrewProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void restoreBrew(Box<Brew> box, int index) async {
+    Box<dynamic> _brewery = await Hive.openBox<Brew>("Brewery");
+    var _tempBrew = box.getAt(index);
+    box.getAt(index).delete();
+
+    _tempBrew.lastEdited = _lastEdited;
+    _brewery.add(_tempBrew);
+    notifyListeners();
+  }
+
   void deleteBrew(Box<Brew> box, int index) async {
     Box<dynamic> _trash = await Hive.openBox<Brew>("Trash");
     var _tempBrew = box.getAt(index);
@@ -35,6 +45,16 @@ class BrewProvider with ChangeNotifier {
 
     _tempBrew.lastEdited = _lastEdited;
     _trash.add(_tempBrew);
+    notifyListeners();
+  }
+
+  void permanentDeleteBrew(Box<Brew> box, int index) async {
+    box.getAt(index).delete();
+    notifyListeners();
+  }
+
+  void cleanTrashCan() {
+    Hive.box<Brew>("Trash").clear();
     notifyListeners();
   }
 
