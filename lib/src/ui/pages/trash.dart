@@ -1,11 +1,9 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/brew_item.dart';
 import 'package:alebrew/src/ui/components/show_clear_trash_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 class Trash extends StatefulWidget {
   Trash({Key key}) : super(key: key);

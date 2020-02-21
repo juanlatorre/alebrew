@@ -1,6 +1,5 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/providers/provider.dart';
-import 'package:alebrew/src/ui/components/change_name_dialog.dart';
 import 'package:alebrew/src/ui/components/custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
