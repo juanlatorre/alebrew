@@ -15,14 +15,8 @@ class _AddNewBrewState extends State<AddNewBrew> {
   final _textController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar("New Brew | Alebrew"),
       body: Container(
         color: Colors.white,
         width: double.infinity,

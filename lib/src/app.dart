@@ -1,5 +1,5 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
+import 'package:alebrew/src/providers/navigation_provider.dart';
 import 'package:alebrew/src/ui/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -13,8 +13,8 @@ class Alebrew extends StatefulWidget {
 class _AlebrewState extends State<Alebrew> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => BrewProvider(),
+    return ChangeNotifierProvider<NavigationProvider>(
+      create: (_) => NavigationProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
