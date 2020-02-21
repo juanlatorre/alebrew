@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
-void showBrewModal(BuildContext context, Box<Brew> box, int index) {
+void showTrashModal(BuildContext context, Box<Brew> box, int index) {
   final provider = Provider.of<BrewProvider>(context, listen: false);
 
   customBottomSheet(

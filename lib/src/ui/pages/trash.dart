@@ -85,9 +85,9 @@ class _TrashState extends State<Trash> {
                   itemCount: box.values.length,
                   itemBuilder: (context, index) {
                     return searchResult == null || searchResult == "" ? 
-                    brewListItem(context, box, index) :
+                    brewListItem(context, box, index, true) :
                     box.getAt(index).name.toLowerCase().contains(searchResult) ?
-                    brewListItem(context, box, index) : 
+                    brewListItem(context, box, index, true) : 
                     Container();
                   },
                 ),

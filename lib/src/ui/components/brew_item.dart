@@ -1,23 +1,20 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/show_brew_modal.dart';
+import 'package:alebrew/src/ui/components/show_trash_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-Widget brewListItem(BuildContext context, Box<Brew> box, int index) {
+Widget brewListItem(BuildContext context, Box<Brew> box, int index,
+    [bool isTrash = false]) {
   return Material(
     color: Colors.white,
     child: InkWell(
-      onTap: () {},
+      onTap: () => (isTrash) ? showTrashModal(context, box, index) : null,
       onLongPress: () => showBrewModal(context, box, index),
       child: Column(
         children: <Widget>[
-          // if (index == 0)
-          //   Divider(
-          //     height: 1,
-          //     color: Colors.black,
-          //   ),
           Padding(
-            padding: const EdgeInsets.only(top: 15, bottom: 15, left: 5, right: 5),
+            padding: EdgeInsets.only(top: 15, bottom: 15, left: 5, right: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -27,7 +24,7 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index) {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                    )
+                    ),
                   ),
                 ),
                 SizedBox(width: 25),
@@ -36,8 +33,8 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index) {
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey
-                  )
+                    color: Colors.grey,
+                  ),
                 ),
               ],
             ),
@@ -47,7 +44,7 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index) {
           //     height: 1,
           //     color: Colors.black,
           //   ),
-        ]
+        ],
       ),
     ),
   );

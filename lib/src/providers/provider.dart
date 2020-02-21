@@ -20,7 +20,7 @@ class BrewProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateBrewName(Box<Brew> box, int index, String newName) {    
+  void updateBrewName(Box<Brew> box, int index, String newName) {
     box.getAt(index).name = newName.trim();
     box.getAt(index).lastEdited = _lastEdited;
 
@@ -28,8 +28,13 @@ class BrewProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteBrew(Box<Brew> box, int index) {
+  void deleteBrew(Box<Brew> box, int index) async {
+    Box<dynamic> _trash = await Hive.openBox<Brew>("Trash");
+    var _tempBrew = box.getAt(index);
     box.getAt(index).delete();
+
+    _tempBrew.lastEdited = _lastEdited;
+    _trash.add(_tempBrew);
     notifyListeners();
   }
 
