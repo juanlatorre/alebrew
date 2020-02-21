@@ -147,6 +147,7 @@ Widget drawer(BuildContext context) {
             'Trash',
             () {
               Navigator.of(context).pop();
+              navigation.updateNavigation("Trash");
             },
             true,
             Icons.delete

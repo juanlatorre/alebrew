@@ -1,8 +1,10 @@
+import 'package:alebrew/src/providers/navigation_provider.dart';
 import 'package:alebrew/src/ui/components/title.dart';
-import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Widget noBrewPage(BuildContext context) {
+  final navigation = Provider.of<NavigationProvider>(context);
   return Container(
     color: Colors.white,
     child: Column(
@@ -42,7 +44,7 @@ Widget noBrewPage(BuildContext context) {
               ]
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AddNewBrew()));
+              navigation.updateNavigation("New Brew");
             }
           ),
         )
