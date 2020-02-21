@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 Widget noBrewPage(BuildContext context) {
-  final navigation = Provider.of<BrewProvider>(context);
+  final provider = Provider.of<BrewProvider>(context);
   return Container(
     color: Colors.white,
     child: Column(
@@ -44,7 +44,7 @@ Widget noBrewPage(BuildContext context) {
               ]
             ),
             onPressed: () {
-              navigation.updateNavigation("New Brew");
+              provider.updateNavigation("New Brew");
             }
           ),
         )

@@ -78,7 +78,6 @@ class _AddNewBrewState extends State<AddNewBrew> {
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             provider.addBrewToDatabase(_textController.text, true);
-                            Navigator.of(context).pop();
                             FocusScope.of(context).unfocus();
                             provider.updateNavigation("View All");
                           }
