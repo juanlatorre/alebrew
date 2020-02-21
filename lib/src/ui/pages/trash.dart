@@ -19,19 +19,13 @@ class _TrashState extends State<Trash> {
 
   @override
   void initState() {
-    _openTrashBox().then((result) {
-      print(result);
-    });
     super.initState();
-  }
-
-  Future _openTrashBox() async {
-    await Hive.openBox<Brew>('Trash');
   }
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BrewProvider>(context);
+
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(right: 30, left: 30, top: 50),
