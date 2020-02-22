@@ -14,6 +14,7 @@ dependencies:
   hive_flutter: ^0.3.0+1
   intl: ^0.16.1
   provider: ^4.0.4
+  linkify_text: ^0.0.5
 
 dev_dependencies:
   flutter_test:
