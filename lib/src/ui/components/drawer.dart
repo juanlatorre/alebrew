@@ -32,8 +32,8 @@ Widget drawer(BuildContext context) {
               Navigator.of(context).pop();
               provider.updateNavigation("New Brew");
             },
-            false,
-            Icons.add_circle
+            lead: false,
+            icon: Icons.add_circle,
           ),
           Divider(),
           drawerTile(
@@ -42,8 +42,8 @@ Widget drawer(BuildContext context) {
               Navigator.of(context).pop();
               provider.updateNavigation("View All");
             },
-            false,
-            Icons.menu
+            lead: false,
+            icon: Icons.menu,
           ),
           Divider(),
           SizedBox(height: 25),
@@ -51,106 +51,61 @@ Widget drawer(BuildContext context) {
             padding: EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 10),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                'Tools',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey[400],
-                  fontWeight: FontWeight.bold,
-                )
-              ),
+              child: Text('Tools',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey[400],
+                    fontWeight: FontWeight.bold,
+                  )),
             ),
           ),
           Divider(),
-          drawerTile(
-            'Gravity',
-            () {
-              print('Gravity button clicked');
-            },
-            false
-          ),
+          drawerTile('Gravity', () {
+            print('Gravity button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Water',
-            () {
-              print('Water button clicked');
-            },
-            false
-          ),
+          drawerTile('Water', () {
+            print('Water button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Salts',
-            () {
-              print('Salts button clicked');
-            },
-            false
-          ),
+          drawerTile('Salts', () {
+            print('Salts button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Macerate',
-            () {
-              print('Macerate button clicked');
-            },
-            false
-          ),
+          drawerTile('Macerate', () {
+            print('Macerate button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'IBUs',
-            () {
-              print('IBUs button clicked');
-            },
-            false
-          ),
+          drawerTile('IBUs', () {
+            print('IBUs button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Dilution',
-            () {
-              print('Dilution button clicked');
-            },
-            false
-          ),
+          drawerTile('Dilution', () {
+            print('Dilution button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'ABV',
-            () {
-              print('ABV button clicked');
-            },
-            false
-          ),
+          drawerTile('ABV', () {
+            print('ABV button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Priming',
-            () {
-              print('Priming button clicked');
-            },
-            false
-          ),
+          drawerTile('Priming', () {
+            print('Priming button clicked');
+          }, lead: false),
           Divider(),
-          drawerTile(
-            'Force Carbonate',
-            () {
-              print('Force Carbonate button clicked');
-            },
-            false
-          ),
+          drawerTile('Force Carbonate', () {
+            print('Force Carbonate button clicked');
+          }, lead: false),
           Divider(),
           SizedBox(height: 25),
-          drawerTile(
-            'Settings',
-            () {
-              print('Settings button clicked');
-            },
-            true,
-            Icons.settings
-          ),
+          drawerTile('Settings', () {}, lead: true, icon: Icons.settings),
           drawerTile(
             'Trash',
             () {
               Navigator.of(context).pop();
               provider.updateNavigation("Trash");
             },
-            true,
-            Icons.delete
+            lead: true,
+            icon: Icons.delete,
           ),
           Padding(
             padding: EdgeInsets.all(10),
@@ -159,12 +114,12 @@ Widget drawer(BuildContext context) {
                 'Version 1.0.0 - Brown Ale',
                 style: TextStyle(
                   color: Colors.pink[200],
-                )
-              )
+                ),
+              ),
             ),
           ),
         ],
       ),
-    )
+    ),
   );
 }
