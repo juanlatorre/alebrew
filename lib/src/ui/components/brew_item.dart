@@ -1,6 +1,7 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/show_brew_modal.dart';
 import 'package:alebrew/src/ui/components/show_trash_modal.dart';
+import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
