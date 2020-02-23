@@ -3,6 +3,7 @@ import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/brew_item.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
+import 'package:alebrew/src/ui/components/title.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -28,12 +29,6 @@ class _BrewPageState extends State<BrewPage> {
     super.initState();
   }
 
-  String _getNumberOfElementsInBrewery() {
-    int _elementNumber = Hive.box<Brew>("Brewery").values.length;
-
-    return _elementNumber >= 10 ? " (${_elementNumber.toString()})" : "";
-  }
-
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BrewProvider>(context);
@@ -44,69 +39,103 @@ class _BrewPageState extends State<BrewPage> {
         color: Colors.white,
         padding: EdgeInsets.only(right: 30, left: 30, top: 50),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  "All" + _getNumberOfElementsInBrewery(),
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    FlatButton(
-                      color: Colors.pink[200],
-                      child: Text(
-                        "New",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onPressed: () {
-                        provider.updateNavigation("New Brew");
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 5),
-            Container(
-              height: 40,
-              child: TextField(
-                autofocus: false,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.bottom,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  hintText: "Search brew...",
-                  hintStyle: TextStyle(color: Colors.grey[600]),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                controller: _searchController,
-                onChanged: (String value) {
-                  setState(
-                    () {
-                      searchResult = value;
-                    },
-                  );
-                },
+            title(brew.name, 35),
+            SizedBox(height: 25),
+            Text(
+              "Last Edited: ${brew.lastEdited}",
+              style: TextStyle(
+                fontSize: 16,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25),
+            Container(
+              width: double.infinity,
+              child: Column(
+                children: <Widget>[
+                  if (brew.pageList.isEmpty)
+                    Text("wena")
+                  else
+                    Flexible(
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "All",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  FlatButton(
+                                    color: Colors.pink[200],
+                                    child: Text(
+                                      "New Batch",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      provider.updateNavigation("New Batch");
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            height: 40,
+                            child: TextField(
+                              autofocus: false,
+                              autocorrect: false,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.search),
+                                filled: true,
+                                fillColor: Colors.grey[100],
+                                hintText: "Search brew...",
+                                hintStyle: TextStyle(color: Colors.grey[600]),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              controller: _searchController,
+                              onChanged: (String value) {
+                                setState(
+                                  () {
+                                    searchResult = value;
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Flexible(
+                            child: ListView.builder(
+                              itemCount: brew.pageList.length,
+                              itemBuilder: (context, index) {
+                                return Text("wena");
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ),
+
             // ValueListenableBuilder(
             //   valueListenable: Hive.box<Brew>("Brewery").listenable(),
             //   builder: (context, Box<Brew> box, _) {
