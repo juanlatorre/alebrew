@@ -1,13 +1,11 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/custom_bottom_sheet.dart';
+import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 void showTrashModal(BuildContext context, Box<Brew> box, int index) {
-  final provider = Provider.of<BrewProvider>(context, listen: false);
-
   customBottomSheet(
     context,
     Column(
@@ -51,7 +49,7 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                provider.restoreBrew(box, index);
+                Functions.restoreBrew(box, index);
               },
             ),
             SizedBox(width: 24),
@@ -79,7 +77,7 @@ void showTrashModal(BuildContext context, Box<Brew> box, int index) {
               onPressed: () async {
                 Navigator.pop(context);
                 await Future.delayed(Duration(milliseconds: 300));
-                provider.permanentDeleteBrew(box, index);
+                Functions.permanentDeleteBrew(box, index);
               },
             )
           ],

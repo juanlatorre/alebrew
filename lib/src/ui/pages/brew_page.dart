@@ -1,13 +1,8 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
-import 'package:alebrew/src/ui/components/brew_item.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 class BrewPage extends StatefulWidget {
   final Brew brew;
@@ -31,7 +26,6 @@ class _BrewPageState extends State<BrewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<BrewProvider>(context);
     return Scaffold(
       appBar: appBar("Home / ${brew.name}"),
       drawer: drawer(context),
@@ -84,7 +78,12 @@ class _BrewPageState extends State<BrewPage> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      provider.updateNavigation("New Batch");
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              Text("Add New Batch"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],

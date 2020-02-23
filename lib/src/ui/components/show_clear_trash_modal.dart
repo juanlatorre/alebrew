@@ -1,12 +1,9 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
+import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 void showClearTrashModal(BuildContext context, Box<Brew> box) {
-  final provider = Provider.of<BrewProvider>(context, listen: false);
-
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -26,7 +23,7 @@ void showClearTrashModal(BuildContext context, Box<Brew> box) {
                 ),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  provider.cleanTrashCan();
+                  Functions.cleanTrashCan();
                 },
               ),
               Container(

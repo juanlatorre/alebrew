@@ -1,14 +1,11 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/change_name_dialog.dart';
 import 'package:alebrew/src/ui/components/custom_bottom_sheet.dart';
+import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 void showBrewModal(BuildContext context, Box<Brew> box, int index) {
-  final provider = Provider.of<BrewProvider>(context, listen: false);
-
   customBottomSheet(
     context,
     Column(
@@ -80,7 +77,7 @@ void showBrewModal(BuildContext context, Box<Brew> box, int index) {
               onPressed: () async {
                 Navigator.pop(context);
                 await Future.delayed(Duration(milliseconds: 300));
-                provider.deleteBrew(box, index);
+                Functions.deleteBrew(box, index);
               },
             )
           ],

@@ -1,10 +1,11 @@
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
+import 'package:alebrew/src/ui/main_view.dart';
+import 'package:alebrew/src/ui/pages/add_new_brew.dart';
+import 'package:alebrew/src/ui/pages/trash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 Widget drawer(BuildContext context) {
-  final provider = Provider.of<BrewProvider>(context);
   return Drawer(
     child: SingleChildScrollView(
       child: Column(
@@ -29,8 +30,11 @@ Widget drawer(BuildContext context) {
           drawerTile(
             'New Brew',
             () {
-              Navigator.of(context).pop();
-              provider.updateNavigation("New Brew");
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AddNewBrew(),
+                ),
+              );
             },
             lead: false,
             icon: Icons.add_circle,
@@ -39,8 +43,11 @@ Widget drawer(BuildContext context) {
           drawerTile(
             'View All',
             () {
-              Navigator.of(context).pop();
-              provider.updateNavigation("View All");
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => MainView(),
+                ),
+              );
             },
             lead: false,
             icon: Icons.menu,
@@ -101,8 +108,11 @@ Widget drawer(BuildContext context) {
           drawerTile(
             'Trash',
             () {
-              Navigator.of(context).pop();
-              provider.updateNavigation("Trash");
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => Trash(),
+                ),
+              );
             },
             lead: true,
             icon: Icons.delete,

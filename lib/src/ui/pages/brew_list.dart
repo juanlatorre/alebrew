@@ -1,10 +1,9 @@
 import 'package:alebrew/src/models/brew.dart';
-import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/brew_item.dart';
+import 'package:alebrew/src/ui/pages/add_new_brew.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 class BrewList extends StatefulWidget {
   BrewList({Key key}) : super(key: key);
@@ -25,7 +24,6 @@ class _BrewListState extends State<BrewList> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<BrewProvider>(context);
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(right: 30, left: 30, top: 50),
@@ -56,7 +54,11 @@ class _BrewListState extends State<BrewList> {
                       ),
                     ),
                     onPressed: () {
-                      provider.updateNavigation("New Brew");
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AddNewBrew(),
+                        ),
+                      );
                     },
                   ),
                 ],

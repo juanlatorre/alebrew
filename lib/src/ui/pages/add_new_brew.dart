@@ -1,5 +1,8 @@
-import 'package:alebrew/src/providers/provider.dart';
+import 'package:alebrew/src/ui/components/appbar.dart';
+import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
+import 'package:alebrew/src/ui/main_view.dart';
+import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,8 +19,9 @@ class _AddNewBrewState extends State<AddNewBrew> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<BrewProvider>(context);
     return Scaffold(
+      appBar: appBar("New Brew"),
+      drawer: drawer(context),
       body: Container(
         color: Colors.white,
         width: double.infinity,
@@ -69,27 +73,31 @@ class _AddNewBrewState extends State<AddNewBrew> {
                           width: 2,
                         ),
                         textColor: Colors.black,
-                        child: Text(
-                          "ADD",
-                          style: TextStyle(
-                            fontSize: 20,
-                          )
-                        ),
+                        child: Text("ADD",
+                            style: TextStyle(
+                              fontSize: 20,
+                            )),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            provider.addBrewToDatabase(_textController.text, true);
+                            Functions.addBrewToDatabase(
+                                _textController.text, true);
                             FocusScope.of(context).unfocus();
-                            provider.updateNavigation("View All");
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => MainView(),
+                              ),
+                            );
                           }
                         },
-                      )
-                    )
+                      ),
+                    ),
                   ],
-                )
-              )
-            )
-          ]
-        )),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
