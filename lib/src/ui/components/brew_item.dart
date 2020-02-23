@@ -30,6 +30,8 @@ Widget brewListItem(BuildContext context, Box<Brew> box, int index,
                 Flexible(
                   child: Text(
                     box.getAt(index).name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

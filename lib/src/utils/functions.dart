@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 class Functions {
   static DateTime _now = DateTime.now().toLocal();
   static String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
-  String currentNavigation = "View All";
   Brew currentBrew;
 
   static void addBrewToDatabase(String brewName,

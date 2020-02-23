@@ -27,7 +27,7 @@ class _BrewPageState extends State<BrewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar("Home / ${brew.name}"),
+      appBar: appBar(brew.name, level: 2),
       drawer: drawer(context),
       body: Container(
         color: Colors.white,
@@ -36,7 +36,7 @@ class _BrewPageState extends State<BrewPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             title(brew.name, 35),
-            SizedBox(height: 25),
+            SizedBox(height: 10),
             Text(
               "Last Edited: ${brew.lastEdited}",
               style: TextStyle(
