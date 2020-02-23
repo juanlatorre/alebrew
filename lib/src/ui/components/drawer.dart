@@ -1,9 +1,8 @@
 import 'package:alebrew/src/ui/components/drawer_tile.dart';
 import 'package:alebrew/src/ui/main_view.dart';
-import 'package:alebrew/src/ui/pages/add_new_brew.dart';
+import 'package:alebrew/src/ui/pages/add_new.dart';
 import 'package:alebrew/src/ui/pages/trash.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 Widget drawer(BuildContext context) {
   return Drawer(
@@ -32,7 +31,7 @@ Widget drawer(BuildContext context) {
             () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => AddNewBrew(),
+                  builder: (context) => AddNew(),
                 ),
               );
             },

@@ -1,26 +1,39 @@
+import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:alebrew/src/ui/main_view.dart';
 import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class AddNewBrew extends StatefulWidget {
-  AddNewBrew({Key key}) : super(key: key);
+class AddNew extends StatefulWidget {
+  final Brew brew;
+
+  AddNew({Key key, this.brew}) : super(key: key);
 
   @override
-  _AddNewBrewState createState() => _AddNewBrewState();
+  _AddNewState createState() => _AddNewState();
 }
 
-class _AddNewBrewState extends State<AddNewBrew> {
+class _AddNewState extends State<AddNew> {
   final _formKey = GlobalKey<FormState>();
   final _textController = TextEditingController();
+  Brew brew;
+
+  @override
+  void initState() {
+    brew = widget.brew;
+    super.initState();
+  }
+
+  String _getTitle() {
+    return brew == null ? "Brew" : "Batch";
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar("New Brew"),
+      appBar: appBar("New ${_getTitle()}"),
       drawer: drawer(context),
       body: Container(
         color: Colors.white,
@@ -29,7 +42,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            title("Insert your Brew Name", 30),
+            title("Insert your ${_getTitle()} Name", 30),
             SizedBox(height: 30),
             Padding(
               padding: EdgeInsets.all(30),
@@ -79,6 +92,7 @@ class _AddNewBrewState extends State<AddNewBrew> {
                             )),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
+                            // TODO: Add different action for Brew and Batch
                             Functions.addBrewToDatabase(
                                 _textController.text, true);
                             FocusScope.of(context).unfocus();

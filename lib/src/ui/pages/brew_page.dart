@@ -2,6 +2,7 @@ import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
+import 'package:alebrew/src/ui/pages/add_new.dart';
 import 'package:flutter/material.dart';
 
 class BrewPage extends StatefulWidget {
@@ -49,7 +50,46 @@ class _BrewPageState extends State<BrewPage> {
               child: Column(
                 children: <Widget>[
                   if (brew.pageList.isEmpty)
-                    Text("wena")
+                    Column(
+                      children: <Widget>[
+                        Divider(
+                          height: 5,
+                          color: Colors.black,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          "This Brew has no Batches.\nDo you want to create one?",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                        SizedBox(
+                          width: 180,
+                          child: FlatButton(
+                            child: Row(children: <Widget>[
+                              ClipOval(
+                                  child: Material(
+                                color: Colors.black,
+                                child: Icon(Icons.add, color: Colors.white),
+                              )),
+                              SizedBox(width: 20),
+                              Text("New Batch",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  )),
+                            ]),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => AddNew(brew: brew),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    )
                   else
                     Flexible(
                       child: Column(

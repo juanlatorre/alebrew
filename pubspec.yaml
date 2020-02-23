@@ -13,8 +13,6 @@ dependencies:
   hive: ^1.3.0
   hive_flutter: ^0.3.0+1
   intl: ^0.16.1
-  provider: ^4.0.4
-  nested_navigators: ^1.0.7
 
 dev_dependencies:
   flutter_test:

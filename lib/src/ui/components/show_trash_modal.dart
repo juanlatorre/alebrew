@@ -3,7 +3,6 @@ import 'package:alebrew/src/ui/components/custom_bottom_sheet.dart';
 import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 void showTrashModal(BuildContext context, Box<Brew> box, int index) {
   customBottomSheet(

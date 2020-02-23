@@ -1,6 +1,6 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/brew_item.dart';
-import 'package:alebrew/src/ui/pages/add_new_brew.dart';
+import 'package:alebrew/src/ui/pages/add_new.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -56,7 +56,7 @@ class _BrewListState extends State<BrewList> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => AddNewBrew(),
+                          builder: (context) => AddNew(),
                         ),
                       );
                     },
