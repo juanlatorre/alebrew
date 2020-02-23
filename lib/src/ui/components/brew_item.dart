@@ -1,16 +1,28 @@
 import 'package:alebrew/src/models/brew.dart';
+import 'package:alebrew/src/providers/provider.dart';
 import 'package:alebrew/src/ui/components/show_brew_modal.dart';
 import 'package:alebrew/src/ui/components/show_trash_modal.dart';
 import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 Widget brewListItem(BuildContext context, Box<Brew> box, int index,
     [bool isTrash = false]) {
+  BrewProvider provider = Provider.of<BrewProvider>(context);
+
   return Material(
     color: Colors.white,
     child: InkWell(
-      onTap: () => (isTrash) ? showTrashModal(context, box, index) : null,
+      onTap: () => (isTrash)
+          ? showTrashModal(context, box, index)
+          : Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => BrewPage(
+                  brew: box.getAt(index),
+                ),
+              ),
+            ),
       onLongPress: () => (isTrash) ? null : showBrewModal(context, box, index),
       child: Column(
         children: <Widget>[

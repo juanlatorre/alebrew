@@ -12,9 +12,6 @@ class Brew extends HiveObject {
   List<dynamic> pageList;
 
   Brew(this.name, this.lastEdited, [this.pageList = const []]);
-
-  @override
-  String toString() => name;
 //   int _brewPage;
 //   String _brewPageName;
 //   String _brewPageType;

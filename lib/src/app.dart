@@ -12,7 +12,7 @@ class Alebrew extends StatefulWidget {
 
 class _AlebrewState extends State<Alebrew> {
   void initState() {
-    _openTrashBox().then((response) => print(response));
+    _openTrashBox();
     super.initState();
   }
 

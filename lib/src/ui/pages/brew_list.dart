@@ -17,14 +17,6 @@ class _BrewListState extends State<BrewList> {
   TextEditingController _searchController = TextEditingController();
   String searchResult = "";
 
-  void setBrewPageState() {
-    // this will be triggered from brew_item.dart, this will say "X page wants to be opened"
-  }
-
-  void getBrewPageState() {
-    // this will be triggered from view_all in order to show the Brew Page
-  }
-
   String _getNumberOfElementsInBrewery() {
     int _elementNumber = Hive.box<Brew>("Brewery").values.length;
 

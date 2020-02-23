@@ -1,5 +1,6 @@
 import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/pages/add_new_brew.dart';
+import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:alebrew/src/ui/pages/trash.dart';
 import 'package:alebrew/src/ui/pages/view_all.dart';
 import 'package:flutter/foundation.dart';
@@ -11,6 +12,7 @@ class BrewProvider with ChangeNotifier {
   static DateTime _now = DateTime.now().toLocal();
   static String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
   String currentNavigation = "View All";
+  Brew currentBrew;
 
   void addBrewToDatabase(String brewName, [bool firstTime = false]) async {
     Box<dynamic> _brewery = await Hive.openBox<Brew>("Brewery");
@@ -63,15 +65,22 @@ class BrewProvider with ChangeNotifier {
       return AddNewBrew();
     } else if (currentNavigation == "Trash") {
       return Trash();
+    } else if (currentNavigation == "Brew Page") {
+      return BrewPage(brew: currentBrew);
     } else {
       return ViewAll();
     }
   }
 
-  String get getNavigationTitle => currentNavigation;
+  String get getNavigationTitle {
+    return currentBrew == null
+        ? currentNavigation
+        : "Home" + " / " + currentBrew.name;
+  }
 
-  void updateNavigation(String navigation) {
+  void updateNavigation(String navigation, {Brew brew}) {
     currentNavigation = navigation;
+    currentBrew = brew;
     notifyListeners();
   }
 }
