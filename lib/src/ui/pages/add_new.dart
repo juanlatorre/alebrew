@@ -3,6 +3,7 @@ import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
 import 'package:alebrew/src/ui/main_view.dart';
+import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
 
@@ -92,15 +93,37 @@ class _AddNewState extends State<AddNew> {
                             )),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            // TODO: Add different action for Brew and Batch
-                            Functions.addBrewToDatabase(
-                                _textController.text, true);
-                            FocusScope.of(context).unfocus();
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => MainView(),
-                              ),
-                            );
+                            if (brew != null) {
+                              Functions.addBrewOrBatchToDatabase(
+                                _textController.text,
+                                brewThatHasNewBatch: brew,
+                              ).then(
+                                (brewResponse) {
+                                  FocusScope.of(context).unfocus();
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Text(brewResponse.status),
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              Functions.addBrewOrBatchToDatabase(
+                                _textController.text,
+                              ).then(
+                                (brewResponse) {
+                                  FocusScope.of(context).unfocus();
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => BrewPage(
+                                        brew: brewResponse,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            }
                           }
                         },
                       ),
