@@ -17,9 +17,9 @@ class BrewAdapter extends TypeAdapter<Brew> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Brew(
-      fields[0] as String,
-      fields[1] as String,
-      (fields[2] as List)?.cast<dynamic>(),
+      name: fields[0] as String,
+      lastEdited: fields[1] as String,
+      pageList: (fields[2] as List)?.cast<dynamic>(),
     );
   }
 

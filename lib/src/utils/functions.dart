@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class Functions {
   Brew currentBrew;
 
-  static Future<dynamic> addBrewOrBatchToDatabase(String brewName,
+  static Future addBrewOrBatchToDatabase(String brewName,
       {Brew brewThatHasNewBatch}) async {
     DateTime _now = DateTime.now().toLocal();
     String _lastEdited = DateFormat('MMM. d, y HH:mm').format(_now);
@@ -15,13 +15,14 @@ class Functions {
     String _brewName = brewName.trim();
 
     if (brewThatHasNewBatch != null) {
-      // Add Batch to Brew
-      brewThatHasNewBatch.pageList.add(Batch(name: brewName));
+      brewThatHasNewBatch.pageList.add(
+        Batch(name: brewName, bottleCount: [], recipe: []),
+      );
       brewThatHasNewBatch.save();
-      return brewThatHasNewBatch.pageList.last();
+      return (brewThatHasNewBatch.pageList.last);
     }
 
-    _brewery.add(Brew(_brewName, _lastEdited));
+    _brewery.add(Brew(name: _brewName, lastEdited: _lastEdited, pageList: []));
     return (_brewery.values.where((brew) => brew.name == _brewName).last);
   }
 

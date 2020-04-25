@@ -160,6 +160,7 @@ class _BrewPageState extends State<BrewPage> {
                             ),
                           ),
                           SizedBox(height: 20),
+                          // FIXME: This throws an error, identify it and fix it it's crucial
                           Flexible(
                             child: ListView.builder(
                               itemCount: brew.pageList.length,

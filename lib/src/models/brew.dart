@@ -11,5 +11,5 @@ class Brew extends HiveObject {
   @HiveField(2)
   List<dynamic> pageList;
 
-  Brew(this.name, this.lastEdited, [this.pageList = const []]);
+  Brew({this.name, this.lastEdited, this.pageList});
 }

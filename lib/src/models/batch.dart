@@ -35,9 +35,9 @@ class Batch extends HiveObject {
   @HiveField(14)
   String carbonationLevel;
   @HiveField(15)
-  List<Map<String, int>> bottleCount = [];
+  List<Map<String, int>> bottleCount;
   @HiveField(16)
-  List<Map<String, dynamic>> recipe = [];
+  List<Map<String, dynamic>> recipe;
 
   Batch({
     this.name,

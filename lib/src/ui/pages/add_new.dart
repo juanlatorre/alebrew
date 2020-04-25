@@ -2,7 +2,6 @@ import 'package:alebrew/src/models/brew.dart';
 import 'package:alebrew/src/ui/components/appbar.dart';
 import 'package:alebrew/src/ui/components/drawer.dart';
 import 'package:alebrew/src/ui/components/title.dart';
-import 'package:alebrew/src/ui/main_view.dart';
 import 'package:alebrew/src/ui/pages/brew_page.dart';
 import 'package:alebrew/src/utils/functions.dart';
 import 'package:flutter/material.dart';
@@ -100,6 +99,7 @@ class _AddNewState extends State<AddNew> {
                               ).then(
                                 (brewResponse) {
                                   FocusScope.of(context).unfocus();
+                                  // TODO: Create Batch Page and push to it
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) =>
